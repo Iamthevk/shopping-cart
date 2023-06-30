@@ -13,7 +13,7 @@ function ProductsPage() {
   }, [])
   // console.log(products.products)
   return (
-    <div className="flex flex-wrap mx-auto w-10/12 gap-5 pt-20">{products.products && (products.products.map(product => {
+    <div className="flex flex-wrap mx-auto w-full md:w-10/12 gap-5 pt-20">{products.products && (products.products.map(product => {
       // console.log(product)
       return (<ProductCard key={product.id} {...product} />)
     }))
