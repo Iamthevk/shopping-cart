@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar"
 function Navbar() {
   return (
     <nav className="bg-white border-b p-3">
-      <div className="container flex justify-between items-center m-auto">
+      <div className="container flex justify-between items-center gap-5 m-auto">
         <a
           href="/shopping_cart"
           rel="noopener noreferrer"
@@ -19,7 +19,7 @@ function Navbar() {
         <ul>
           <li>
             <button
-              className="text-2xl cart_btn flex  items-center  focus:outline-none focus:shadow-outline rounded-lg"
+              className="text-2xl cart_btn flex  focus:outline-none focus:shadow-outline rounded-lg"
             >
              <img src={"../src/assets/cart.svg"} alt="cart" className="w-20 md:w-12 my-auto"/>
               {/* <span className="text-pink-600 text-xl mt-2 mx-1 font-extrabold inline-block">
