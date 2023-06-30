@@ -2,8 +2,8 @@ import SearchBar from "./SearchBar"
 
 function Navbar() {
   return (
-    <nav className="bg-white border-b p-3">
-      <div className="container flex justify-between items-center gap-5 m-auto">
+    <nav className="bg-white border-b p-3 w-screen">
+      <div className="container flex justify-between items-center gap-20 m-auto">
         <a
           href="/shopping_cart"
           rel="noopener noreferrer"
@@ -33,4 +33,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default Navbar;
