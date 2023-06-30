@@ -9,7 +9,7 @@ function Navbar() {
           rel="noopener noreferrer"
           className="md:text-xl uppercase tracking-widest shadow-outline p-1 rounded-lg "
         >
-          <span className="bg-pink-600 text-pink-100 px-2  rounded mr-1">
+          <span className="bg-primary-500 text-white px-2  rounded mr-1">
             Shopping Cart
           </span>
           👉
@@ -22,7 +22,7 @@ function Navbar() {
               className="text-2xl cart_btn flex  focus:outline-none focus:shadow-outline rounded-lg"
             >
              <img src={"../src/assets/cart.svg"} alt="cart" className="w-20 md:w-12 my-auto"/>
-              {/* <span className="text-pink-600 text-xl mt-2 mx-1 font-extrabold inline-block">
+              {/* <span className="text-primary-500 text-xl mt-2 mx-1 font-extrabold inline-block">
                 {props.productCount}
               </span> */}
             </button>

@@ -1,7 +1,8 @@
 // import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar';
-import Products from './components/Products';
+import ProductCard from './components/Product';
+// import Products from './components/Products';
 import useFetch from './utils/hooks/useFetch';
 
 function App() {
@@ -10,7 +11,8 @@ useFetch();
     <div>
       <Navbar/>
       <h1 className='text-red-500 '>Shopping Cart App</h1>
-      <Products/>
+      {/* <Products/> */}
+      <ProductCard/>
     </div>
   )
 }
