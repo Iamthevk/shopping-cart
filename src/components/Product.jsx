@@ -8,7 +8,7 @@ function ProductCard({rating,title,description,price,thumbnail}) {
           <h1 className="text-lg font-semibold">{title}</h1>
           <img src={"../src/assets/bookmark.svg"} className="w-8 h-8" />
         </div>
-        <div className="flex justify-between items-center w-40">
+        <div className="flex justify-between items-center w-40 mb-3">
           <span className="bg-green-500 p-2 text-white text-sm rounded-md">
             {rating} stars
           </span>

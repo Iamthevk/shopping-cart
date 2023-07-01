@@ -1,16 +1,31 @@
 // import { useState } from 'react'
 import './App.css'
-import {Navbar, ProductsPage}  from './components';
-// import {ProductCard} from './components';
+// import {  Navbar, ProductsPage } from './components';
+import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+
+const router = createBrowserRouter([
+  {
+    path: '*',
+    Component: Root
+  }
+  
+
+])
+
+function Root() {
+  return(
+    <Routes>
+      <Route path='/' element={<Layout/>}/>
+    </Routes>
+  )
+}
 
 function App() {
   return (
-    <div>
-      <Navbar/>
-      {/* <h1 className='text-red-500 '>Shopping Cart App</h1> */}
-      <ProductsPage/>
-      {/* <ProductCard/> */}
-    </div>
+    <>
+    <RouterProvider router={router} />
+    </>
   )
 }
 
