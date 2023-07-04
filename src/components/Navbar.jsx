@@ -15,13 +15,13 @@ function Navbar() {
           👉
           <span className="text-purple-900 p-1 rounded text-xs md:text-base">House</span>
         </a>
-        <SearchBar/>
+           <SearchBar />
         <ul>
           <li>
             <button
               className="text-2xl cart_btn flex  focus:outline-none focus:shadow-outline rounded-lg"
             >
-             <img src={"../src/assets/cart.svg"} alt="cart" className="w-8 md:w-12 my-auto"/>
+              <img src={"../src/assets/cart.svg"} alt="cart" className="w-8 md:w-12 my-auto" />
               {/* <span className="text-primary-500 text-xl mt-2 mx-1 font-extrabold inline-block">
                 {props.productCount}
               </span> */}

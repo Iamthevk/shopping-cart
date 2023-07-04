@@ -1,8 +1,8 @@
 // eslint-disable-next-line react/prop-types
-function ProductCard({rating,title,description,price,thumbnail}) {
+function ProductCard({ rating, title, description, price, thumbnail }) {
   return (
     <div className="w-96 h-96 border-4 rounded-xl p-2">
-      <img src={thumbnail} alt={title} className="h-56 w-full"/>
+      <img src={thumbnail} alt={title} className="h-56 w-full" />
       <div className="text-left  mt-3 p-2">
         <div className="flex justify-between">
           <h1 className="text-lg font-semibold">{title}</h1>

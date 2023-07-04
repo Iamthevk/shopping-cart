@@ -1,32 +1,35 @@
 // import { useState } from 'react'
-import './App.css'
+import "./App.css";
 // import {  Navbar, ProductsPage } from './components';
-import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
-import Layout from './components/Layout';
+import {
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
   {
-    path: '*',
-    Component: Root
-  }
-  
-
-])
+    path: "*",
+    Component: Root,
+  },
+]);
 
 function Root() {
-  return(
+  return (
     <Routes>
-      <Route path='/' element={<Layout/>}/>
+      <Route path="/" element={<Layout />} />
     </Routes>
-  )
+  );
 }
 
 function App() {
   return (
     <>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
