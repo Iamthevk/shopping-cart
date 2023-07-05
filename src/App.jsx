@@ -1,6 +1,5 @@
-// import { useState } from 'react'
 import "./App.css";
-// import {  Navbar, ProductsPage } from './components';
+import { CartProvider } from "./context/CartContext";
 import {
   createBrowserRouter,
   Route,
@@ -8,6 +7,7 @@ import {
   Routes,
 } from "react-router-dom";
 import Layout from "./components/Layout";
+import Checkout from "./pages/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -18,9 +18,12 @@ const router = createBrowserRouter([
 
 function Root() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />} />
-    </Routes>
+    <CartProvider>
+      <Routes>
+        <Route path="/" element={<Layout />} />
+        <Route path="/checkout" element={<Checkout />} />
+      </Routes>
+    </CartProvider>
   );
 }
 
