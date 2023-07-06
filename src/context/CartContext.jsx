@@ -6,10 +6,12 @@ export const CartContext = createContext({
   addItemToCart: () => {},
 });
 export const addCartItem = (cartItems, productToAdd) => {
+  //find if cartItem contains productToAdd
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
 
+  //if found increase the quantity by 1
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
       cartItem.id === productToAdd.id

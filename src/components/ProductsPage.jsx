@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "../utils/hooks/useFetch";
-import ProductCard from "./Product";
+import ProductCard from "./ProductCard";
 import Loader from "./Loader";
 
 function ProductsPage() {
@@ -12,7 +12,6 @@ function ProductsPage() {
       .then((data) => setProducts(data))
       .catch((err) => console.log("could not load products", err));
   }, []);
-  // console.log(products.products)
   if (loading) {
     return <Loader />;
   }
@@ -21,7 +20,6 @@ function ProductsPage() {
       {!loading &&
         products.products &&
         products.products.map((product) => {
-          // console.log(product)
           return <ProductCard key={product.id} {...product} />;
         })}
     </div>
