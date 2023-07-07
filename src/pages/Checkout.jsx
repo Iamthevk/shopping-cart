@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+
 import Loader from "../components/Loader";
 
 function Checkout() {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, addItemToCart, removeItemFromCart } =
+    useContext(CartContext);
   if (cartItems.length < 1) {
     <Loader />;
   }
@@ -20,11 +22,27 @@ function Checkout() {
               className="md:flex justify-center text-center items-center w-full gap-5 "
             >
               <img src={item.thumbnail} className="w-80  h-60 my-4" />
-              <div>
+              <div className="">
                 <h1 className="font-bold text-lg">{item.title}</h1>
                 <p className="md:w-96 flex-wrap ">{item.description}</p>
                 <p className="mt-3">
-                  Number of Items: {item.quantity} x ₹{item.price}
+                  Number of Items: {item.quantity}{" "}
+                  <div className="flex gap-2 justify-center">
+                    <button
+                      onClick={() => addItemToCart(item)}
+                      className="border border-[#2ca9bc] p-2"
+                    >
+                      <img src={"../src/assets/arrowUp.svg"} />
+                    </button>
+                    <button
+                      disabled={item.quantity === 0}
+                      className="border border-[#2ca9bc] p-2"
+                      onClick={() => removeItemFromCart(item)}
+                    >
+                      <img src={"../src/assets/arrowDown.svg"} />
+                    </button>
+                  </div>
+                  <span className="ml-5">Price: ₹{item.price}</span>
                 </p>
               </div>
             </div>
