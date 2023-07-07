@@ -6,8 +6,9 @@ import {
   RouterProvider,
   Routes,
 } from "react-router-dom";
-import Layout from "./components/Layout";
+import ProductsPage from "./components/ProductsPage";
 import Checkout from "./pages/Checkout";
+import Navbar from "./components/Navbar";
 
 const router = createBrowserRouter([
   {
@@ -19,9 +20,17 @@ const router = createBrowserRouter([
 function Root() {
   return (
     <CartProvider>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Layout />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/" element={<ProductsPage />} />
+        <Route
+          path="/checkout"
+          element={
+            <>
+              <Checkout />
+            </>
+          }
+        />
       </Routes>
     </CartProvider>
   );

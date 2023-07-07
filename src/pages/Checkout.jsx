@@ -17,12 +17,15 @@ function Checkout() {
           return (
             <div
               key={item.id}
-              className="flex justify-center text-center items-center w-full   gap-5 "
+              className="md:flex justify-center text-center items-center w-full gap-5 "
             >
               <img src={item.thumbnail} className="w-80  h-60 my-4" />
               <div>
-                <h1 className="font-bold ">{item.title}</h1>
-                <p className="w-96 flex-wrap ">{item.description}</p>
+                <h1 className="font-bold text-lg">{item.title}</h1>
+                <p className="md:w-96 flex-wrap ">{item.description}</p>
+                <p className="mt-3">
+                  Number of Items: {item.quantity} x ₹{item.price}
+                </p>
               </div>
             </div>
           );

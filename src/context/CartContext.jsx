@@ -24,7 +24,9 @@ export const addCartItem = (cartItems, productToAdd) => {
 };
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems")) || []
+  );
   const [cartItemCount, setCartItemCount] = useState(0);
 
   useEffect(() => {
@@ -33,6 +35,9 @@ export const CartProvider = ({ children }) => {
       0
     );
     setCartItemCount(count);
+
+    //set cartItems to localstorage as cartItems being added/removed
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
   const addItemToCart = (product) => {
     setCartItems(addCartItem(cartItems, product));

@@ -4,7 +4,9 @@ import { CartContext } from "../context/CartContext";
 function ProductCard({ ...product }) {
   const { addItemToCart } = useContext(CartContext);
   const { title, thumbnail, rating, price, description } = product;
-  const addProductToCart = () => addItemToCart(product);
+  const addProductToCart = () => {
+    addItemToCart(product);
+  };
   return (
     <div className="w-96 h-96 border-4 rounded-xl p-2">
       <img src={thumbnail} alt={title} className="h-56 w-full" />

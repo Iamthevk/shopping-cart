@@ -9,7 +9,7 @@ function Navbar() {
     <nav className="bg-white border-b p-3 md:w-screen">
       <div className="container flex justify-between items-center gap-6 md:gap-20 m-auto">
         <a
-          href="/shopping_cart"
+          href="/"
           rel="noopener noreferrer"
           className="md:text-xl uppercase tracking-widest shadow-outline p-1 rounded-lg "
         >
