@@ -4,7 +4,7 @@ import { CartContext } from "../context/CartContext";
 import Loader from "../components/Loader";
 
 function Checkout() {
-  const { cartItems, addItemToCart, removeItemFromCart } =
+  const { cartItems, addItemToCart, removeItemFromCart, clearItemFromCart } =
     useContext(CartContext);
   if (cartItems.length < 1) {
     <Loader />;
@@ -25,7 +25,7 @@ function Checkout() {
               <div className="">
                 <h1 className="font-bold text-lg">{item.title}</h1>
                 <p className="md:w-96 flex-wrap ">{item.description}</p>
-                <p className="mt-3">
+                <div className="mt-3">
                   Number of Items: {item.quantity}{" "}
                   <div className="flex gap-2 justify-center">
                     <button
@@ -42,8 +42,14 @@ function Checkout() {
                       <img src={"../src/assets/arrowDown.svg"} />
                     </button>
                   </div>
+                  <button
+                    className="bg-red-500 text-white rounded-lg p-3 m-2"
+                    onClick={() => clearItemFromCart(item)}
+                  >
+                    Remove Item
+                  </button>
                   <span className="ml-5">Price: ₹{item.price}</span>
-                </p>
+                </div>
               </div>
             </div>
           );

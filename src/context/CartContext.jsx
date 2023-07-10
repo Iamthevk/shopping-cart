@@ -5,8 +5,9 @@ export const CartContext = createContext({
   cartItemCount: 0,
   addItemToCart: () => {},
   removeItemFromCart: () => {},
+  clearItemFromCart: () => {},
 });
-export const addCartItem = (cartItems, productToAdd) => {
+const addCartItem = (cartItems, productToAdd) => {
   //find if cartItem contains productToAdd
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
@@ -41,7 +42,10 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
       : cartItem;
   });
 };
-
+const clearCartItem = (cartItems, productToClear) => {
+  // here we will filter item's id that is matching with cartItem's id and remove that from array
+  return cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
+};
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("cartItems")) || []
@@ -58,13 +62,24 @@ export const CartProvider = ({ children }) => {
     //set cartItems to localstorage as cartItems being added/removed
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
+
   const addItemToCart = (product) => {
-    console.log(addCartItem(cartItems, product));
     setCartItems(addCartItem(cartItems, product));
   };
   const removeItemFromCart = (productToRemove) => {
     setCartItems(removeCartItem(cartItems, productToRemove));
   };
-  const value = { cartItems, addItemToCart, removeItemFromCart, cartItemCount };
+
+  const clearItemFromCart = (productToClear) => {
+    setCartItems(clearCartItem(cartItems, productToClear));
+  };
+
+  const value = {
+    cartItems,
+    addItemToCart,
+    removeItemFromCart,
+    cartItemCount,
+    clearItemFromCart,
+  };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
