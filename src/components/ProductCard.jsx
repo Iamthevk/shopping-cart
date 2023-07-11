@@ -4,18 +4,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 
 function ProductCard({ ...product }) {
-  const { addItemToCart, removeItemFromCart } = useContext(CartContext);
+  const { addItemToCart } = useContext(CartContext);
   const { title, thumbnail, rating, price, description } = product;
   const addProductToCart = () => {
     addItemToCart(product);
   };
-  const removeProductFromCart = () => {
-    removeItemFromCart(product);
-  };
+
   const addNotify = () =>
     toast.success("Item added to cart", { autoClose: 500 });
-  const removeNotify = () =>
-    toast.error("Item removed from cart", { autoClose: 500 });
+
   return (
     <div className="w-96 h-96 border-4 rounded-xl p-2">
       <img src={thumbnail} alt={title} className="h-56 w-full" />
@@ -33,25 +30,15 @@ function ProductCard({ ...product }) {
             </span>
             <p className="font-semibold">₹ {price}</p>
           </div>
-          <div className="mx-4 w-24 ">
+          <div className="mx-4 w-28   ">
             <button
               onClick={() => {
                 addProductToCart();
                 addNotify();
               }}
-              className="border focus:ring-2 rounded-full py-1 px-3 mr-2 font-bold  "
+              className="border focus:ring-2 rounded-full py-0.5 px-4 mr-2 font-bold  "
             >
-              +
-            </button>
-            {/* <span className="mr-2">{cartItemCount || 0}</span> */}
-            <button
-              className="border rounded-full focus:ring-2 py-1 px-3 font-bold"
-              onClick={() => {
-                removeProductFromCart();
-                removeNotify();
-              }}
-            >
-              -
+              Add to Cart
             </button>
           </div>
         </div>

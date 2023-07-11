@@ -3,8 +3,9 @@ import SearchBar from "./SearchBar";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
-function Navbar() {
+function Navbar({ searchQuery, setSearchQuery }) {
   const { cartItemCount } = useContext(CartContext);
+
   return (
     <nav className="bg-white border-b p-3 md:w-screen">
       <div className="container flex justify-between items-center gap-6 md:gap-20 m-auto">
@@ -21,7 +22,7 @@ function Navbar() {
             House
           </span>
         </a>
-        <SearchBar />
+        <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
         <ul>
           <li>
             <Link to="/checkout">

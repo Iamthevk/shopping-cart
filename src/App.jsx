@@ -9,6 +9,7 @@ import {
 import ProductsPage from "./components/ProductsPage";
 import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
+import { useState } from "react";
 
 const router = createBrowserRouter([
   {
@@ -18,11 +19,12 @@ const router = createBrowserRouter([
 ]);
 
 function Root() {
+  const [searchQuery, setSearchQuery] = useState("");
   return (
     <CartProvider>
-      <Navbar />
+      <Navbar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
       <Routes>
-        <Route path="/" element={<ProductsPage />} />
+        <Route path="/" element={<ProductsPage searchQuery={searchQuery} />} />
         <Route
           path="/checkout"
           element={
