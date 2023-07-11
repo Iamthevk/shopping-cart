@@ -10,6 +10,7 @@ import ProductsPage from "./components/ProductsPage";
 import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
+import ProductDetails from "./pages/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ function Root() {
   return (
     <CartProvider>
       <Navbar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+      <ProductDetails />
       <Routes>
         <Route path="/" element={<ProductsPage searchQuery={searchQuery} />} />
         <Route
@@ -30,6 +32,14 @@ function Root() {
           element={
             <>
               <Checkout />
+            </>
+          }
+        />
+        <Route
+          path="/product-details/:id"
+          element={
+            <>
+              <ProductDetails />
             </>
           }
         />

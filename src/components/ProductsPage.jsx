@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
-import useFetch from "../utils/hooks/useFetch";
+// import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import Loader from "./Loader";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function ProductsPage({ searchQuery }) {
-  const [products, setProducts] = useState([]);
+  const { products, loading } = useContext(CartContext);
 
-  const { get, loading } = useFetch("https://dummyjson.com/products");
-  useEffect(() => {
-    get()
-      .then((data) => setProducts(data))
-      .catch((err) => console.log("could not load products", err));
-  }, []);
   if (loading) {
     return <Loader />;
   }

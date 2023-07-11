@@ -1,12 +1,20 @@
 import { useState } from "react";
 
-function useFetch(url) {
+function useFetch(urls) {
   const [loading, setLoading] = useState(true);
 
   function get() {
     return new Promise((resolve, reject) => {
-      fetch(url)
-        .then((response) => response.json())
+      const promises = urls.map((url) =>
+        fetch(url)
+          .then((response) => response.json())
+
+          .catch((error) => {
+            setLoading(false);
+            reject(error);
+          })
+      );
+      Promise.all(promises)
         .then((data) => {
           if (!data) {
             setLoading(false);

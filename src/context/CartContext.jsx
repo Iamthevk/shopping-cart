@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from "react";
-
+import { createContext, useState, useEffect, useCallback } from "react";
+import useFetch from "../utils/hooks/useFetch";
+import { useParams } from "react-router-dom";
 export const CartContext = createContext({
   cartItems: [],
   cartItemCount: 0,
@@ -51,6 +52,26 @@ export const CartProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("cartItems")) || []
   );
   const [cartItemCount, setCartItemCount] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [singleProduct, setSingleProduct] = useState([]);
+  const { id } = useParams();
+  console.log({ id });
+  const urls = [
+    "https://dummyjson.com/products",
+    `https://dummyjson.com/products/${id}`,
+  ];
+  const { get, loading } = useFetch(urls);
+  const getData = useCallback(() => {
+    return get()
+      .then((data) => {
+        setProducts(data[0]);
+        setSingleProduct(data[1]);
+      })
+      .catch((err) => console.log("could not load products", err));
+  }, []);
+  useEffect(() => {
+    getData();
+  }, [urls]);
 
   useEffect(() => {
     const count = cartItems.reduce(
@@ -62,7 +83,8 @@ export const CartProvider = ({ children }) => {
     //set cartItems to localstorage as cartItems being added/removed
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
-
+  console.log(products);
+  console.log(singleProduct);
   const addItemToCart = (product) => {
     setCartItems(addCartItem(cartItems, product));
   };
@@ -80,6 +102,9 @@ export const CartProvider = ({ children }) => {
     removeItemFromCart,
     cartItemCount,
     clearItemFromCart,
+    products,
+    singleProduct,
+    loading,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
