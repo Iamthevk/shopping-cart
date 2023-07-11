@@ -3,7 +3,7 @@ import useFetch from "../utils/hooks/useFetch";
 import ProductCard from "./ProductCard";
 import Loader from "./Loader";
 
-function ProductsPage() {
+function ProductsPage({ searchQuery }) {
   const [products, setProducts] = useState([]);
 
   const { get, loading } = useFetch("https://dummyjson.com/products");
@@ -15,11 +15,14 @@ function ProductsPage() {
   if (loading) {
     return <Loader />;
   }
+  const filteredProducts = products?.products.filter((product) =>
+    product.title.toLowerCase().includes(searchQuery)
+  );
   return (
     <div className="flex flex-wrap mx-auto w-full md:w-10/12 gap-5 pt-20">
       {!loading &&
         products.products &&
-        products.products.map((product) => {
+        filteredProducts.map((product) => {
           return <ProductCard key={product.id} {...product} />;
         })}
     </div>
