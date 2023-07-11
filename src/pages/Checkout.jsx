@@ -30,20 +30,20 @@ function Checkout() {
                   <div className="flex gap-2 justify-center">
                     <button
                       onClick={() => addItemToCart(item)}
-                      className="border border-[#2ca9bc] p-2"
+                      className="border border-[#2ca9bc] p-2 focus:ring-2"
                     >
                       <img src={"../src/assets/arrowUp.svg"} />
                     </button>
                     <button
                       disabled={item.quantity === 0}
-                      className="border border-[#2ca9bc] p-2"
+                      className="border border-[#2ca9bc] p-2 focus:ring-2"
                       onClick={() => removeItemFromCart(item)}
                     >
                       <img src={"../src/assets/arrowDown.svg"} />
                     </button>
                   </div>
                   <button
-                    className="bg-red-500 text-white rounded-lg p-3 m-2"
+                    className="bg-red-500 text-white rounded-lg p-3 m-2 focus:ring-2"
                     onClick={() => clearItemFromCart(item)}
                   >
                     Remove Item
