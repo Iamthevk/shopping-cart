@@ -24,7 +24,6 @@ function Root() {
   return (
     <CartProvider>
       <Navbar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      <ProductDetails />
       <Routes>
         <Route path="/" element={<ProductsPage searchQuery={searchQuery} />} />
         <Route
