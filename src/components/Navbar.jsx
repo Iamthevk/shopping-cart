@@ -28,7 +28,7 @@ function Navbar({ searchQuery, setSearchQuery }) {
             <Link to="/checkout">
               <button className="text-2xl cart_btn flex  focus:outline-none focus:shadow-outline rounded-lg">
                 <img
-                  src={"../src/assets/cart.svg"}
+                  src={"/cart.svg"}
                   alt="cart"
                   className="w-8 md:w-12 my-auto"
                 />

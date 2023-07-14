@@ -34,14 +34,14 @@ function Checkout() {
                       onClick={() => addItemToCart(item)}
                       className="border border-[#2ca9bc] p-2 focus:ring-2"
                     >
-                      <img src={"../src/assets/arrowUp.svg"} />
+                      <img src={"/arrowUp.svg"} />
                     </button>
                     <button
                       disabled={item.quantity === 0}
                       className="border border-[#2ca9bc] p-2 focus:ring-2"
                       onClick={() => removeItemFromCart(item)}
                     >
-                      <img src={"../src/assets/arrowDown.svg"} />
+                      <img src={"/arrowDown.svg"} />
                     </button>
                   </div>
                   <button

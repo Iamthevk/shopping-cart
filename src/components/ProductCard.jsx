@@ -24,7 +24,7 @@ function ProductCard({ ...product }) {
           <h1 className="text-lg font-semibold truncate overflow-hidden text-ellipsis">
             {title}
           </h1>
-          <img src={"../src/assets/bookmark.svg"} className="w-8 h-8" />
+          <img src={"/bookmark.svg"} className="w-8 h-8" />
         </div>
         <div className="flex justify-between p-1">
           <div className="flex justify-between items-center w-40 mb-3">
