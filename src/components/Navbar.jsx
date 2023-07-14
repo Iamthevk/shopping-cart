@@ -7,7 +7,7 @@ function Navbar({ searchQuery, setSearchQuery }) {
   const { cartItemCount } = useContext(CartContext);
 
   return (
-    <nav className="bg-white border-b p-3 md:w-screen">
+    <nav className="bg-white border-b p-3 md:w-screen !mb-10 fixed top-0 z-10">
       <div className="container flex justify-between items-center gap-6 md:gap-20 m-auto">
         <a
           href="/"
