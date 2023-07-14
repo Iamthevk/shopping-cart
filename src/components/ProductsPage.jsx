@@ -14,7 +14,7 @@ function ProductsPage({ searchQuery }) {
 
   useEffect(() => {
     setNewProducts(filteredProducts);
-  }, [products]);
+  }, [products, searchQuery]);
 
   if (loading) {
     return <Loader />;
