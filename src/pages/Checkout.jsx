@@ -1,11 +1,15 @@
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+// import { useContext } from "react";
+// import { CartContext } from "../context/CartContext";
 
 import Loader from "../components/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct, clearProduct, removeProduct } from "../features/cartSlice";
 
 function Checkout() {
-  const { cartItems, addItemToCart, removeItemFromCart, clearItemFromCart } =
-    useContext(CartContext);
+  // const { cartItems, addItemToCart, removeItemFromCart, clearItemFromCart } =
+  //   useContext(CartContext);
+  const cartItems = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   if (cartItems.length < 1) {
     <Loader />;
   }
@@ -31,7 +35,7 @@ function Checkout() {
                   Number of Items: {item.quantity}{" "}
                   <div className="flex gap-2 justify-center">
                     <button
-                      onClick={() => addItemToCart(item)}
+                      onClick={() => dispatch(addProduct(item))}
                       className="border border-[#2ca9bc] p-2 focus:ring-2"
                     >
                       <img src={"/arrowUp.svg"} />
@@ -39,14 +43,14 @@ function Checkout() {
                     <button
                       disabled={item.quantity === 0}
                       className="border border-[#2ca9bc] p-2 focus:ring-2"
-                      onClick={() => removeItemFromCart(item)}
+                      onClick={() => dispatch(removeProduct(item))}
                     >
                       <img src={"/arrowDown.svg"} />
                     </button>
                   </div>
                   <button
                     className="bg-red-500 text-white rounded-lg p-3 m-2 focus:ring-2"
-                    onClick={() => clearItemFromCart(item)}
+                    onClick={() => dispatch(clearProduct(item))}
                   >
                     Remove Item
                   </button>

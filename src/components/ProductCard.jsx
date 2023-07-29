@@ -12,7 +12,7 @@ function ProductCard({ ...product }) {
   const dispatch = useDispatch();
   const addProductToCart = () => {
     // addItemToCart(product);
-    dispatch(addProduct(id));
+    dispatch(addProduct(product));
   };
   const addNotify = () =>
     toast.success("Item added to cart", { autoClose: 500 });
