@@ -1,13 +1,8 @@
-// import { useContext } from "react";
-// import { CartContext } from "../context/CartContext";
-
 import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct, clearProduct, removeProduct } from "../features/cartSlice";
 
 function Checkout() {
-  // const { cartItems, addItemToCart, removeItemFromCart, clearItemFromCart } =
-  //   useContext(CartContext);
   const cartItems = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   if (cartItems.length < 1) {

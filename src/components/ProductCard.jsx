@@ -1,5 +1,3 @@
-// import { useContext } from "react";
-// import { CartContext } from "../context/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 import { Link } from "react-router-dom";
@@ -7,11 +5,9 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "../features/cartSlice";
 
 function ProductCard({ ...product }) {
-  // const { addItemToCart } = useContext(CartContext);
   const { id, title, thumbnail, rating, price, description } = product;
   const dispatch = useDispatch();
   const addProductToCart = () => {
-    // addItemToCart(product);
     dispatch(addProduct(product));
   };
   const addNotify = () =>

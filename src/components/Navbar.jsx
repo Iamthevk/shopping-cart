@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-// import { useContext } from "react";
-// import { CartContext } from "../context/CartContext";
+
 import { useSelector } from "react-redux";
 import { cartCountSelector } from "../features/cartSlice";
 
 function Navbar({ searchQuery, setSearchQuery }) {
-  // const { cartItemCount } = useContext(CartContext);
   const cartItemCount = useSelector(cartCountSelector);
   return (
     <nav className="bg-white border-b p-3 md:w-screen !mb-10 fixed top-0 z-10">
