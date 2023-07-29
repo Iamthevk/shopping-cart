@@ -1,16 +1,19 @@
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+// import { useContext } from "react";
+// import { CartContext } from "../context/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../features/cartSlice";
 
 function ProductCard({ ...product }) {
-  const { addItemToCart } = useContext(CartContext);
+  // const { addItemToCart } = useContext(CartContext);
   const { id, title, thumbnail, rating, price, description } = product;
+  const dispatch = useDispatch();
   const addProductToCart = () => {
-    addItemToCart(product);
+    // addItemToCart(product);
+    dispatch(addProduct(id));
   };
-
   const addNotify = () =>
     toast.success("Item added to cart", { autoClose: 500 });
 

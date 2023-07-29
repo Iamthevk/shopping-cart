@@ -18,7 +18,7 @@ const cartSlice = createSlice({
         }
     }
 })
-
+const cartCountSelector = (state) =>  state.cart.reduce((total,product) => total + product.quantity, 0)
 const cartReducer = cartSlice.reducer
-const addProduct = cartSlice.actions
-export {addProduct,cartReducer}
+const {addProduct} = cartSlice.actions
+export  {addProduct,cartReducer,cartCountSelector}
