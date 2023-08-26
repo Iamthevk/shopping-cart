@@ -1,8 +1,8 @@
 import ProductCard from "./ProductCard";
-import Loader from "./Loader";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import FilterProducts from "./FilterProducts";
+import Shimmer from "./Shimmer";
 
 function ProductsPage({ searchQuery }) {
   const { products, loading } = useContext(CartContext);
@@ -14,10 +14,6 @@ function ProductsPage({ searchQuery }) {
   useEffect(() => {
     setNewProducts(filteredProducts);
   }, [products, searchQuery]);
-
-  if (loading) {
-    return <Loader />;
-  }
 
   function handleSortProducts(sortBy) {
     let sortedProducts;
@@ -50,10 +46,13 @@ function ProductsPage({ searchQuery }) {
     <div>
       <FilterProducts onChange={handleSortProducts} />
       <div className="flex flex-wrap mx-auto w-full md:w-10/12 gap-5 pt-5 mb-10">
-        {!loading &&
+        {!loading ? (
           newProducts?.map((product) => {
             return <ProductCard key={product.id} {...product} />;
-          })}
+          })
+        ) : (
+          <Shimmer />
+        )}
       </div>
     </div>
   );
