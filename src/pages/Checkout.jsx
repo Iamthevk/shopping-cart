@@ -36,7 +36,7 @@ function Checkout() {
                       <img src={"/arrowUp.svg"} />
                     </button>
                     <button
-                      disabled={item.quantity === 0}
+                      disabled={item.quantity === 1}
                       className="border border-[#2ca9bc] p-2 focus:ring-2"
                       onClick={() => dispatch(removeProduct(item))}
                     >
@@ -49,7 +49,9 @@ function Checkout() {
                   >
                     Remove Item
                   </button>
-                  <span className="ml-5">Price: ₹{item.price}</span>
+                  <span className="ml-5">
+                    Price: ₹{item.price * item.quantity}
+                  </span>
                 </div>
               </div>
             </div>
