@@ -1,19 +1,35 @@
 import Loader from "../components/Loader";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct, clearProduct, removeProduct } from "../features/cartSlice";
 
 function Checkout() {
+  const [visible, setVisible] = useState(true);
   const cartItems = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   if (cartItems.length < 1) {
     <Loader />;
   }
+  function handleOrder() {
+    alert("Your Order was successful.");
+    setVisible(false);
+    cartItems.map((item) => {
+      return dispatch(clearProduct(item));
+    });
+  }
   return (
     <div className="mt-5 w-11/12 mx-auto ">
       <div>
-        <h2 className="text-5xl mb-10 text-primary-500 ">
-          Your Shopping Basket
-        </h2>
+        {visible && (
+          <>
+            <h2 className="text-5xl mb-10 text-primary-500 ">
+              Your shopping basket {cartItems < 1 && "is empty"}
+            </h2>
+            <p className="text-3xl text-purple-500">
+              {cartItems < 1 && "Please add items to proceed to checkout"}
+            </p>
+          </>
+        )}
       </div>
       <div>
         {cartItems.map((item) => {
@@ -58,10 +74,20 @@ function Checkout() {
           );
         })}
       </div>
-      <button className="mt-5 p-3 items-end bg-blue-800 text-white w-2/4 mb-10">
-        {" "}
-        Go to Checkout
-      </button>
+      {visible ? (
+        <button
+          className="mt-5 p-3 items-end bg-blue-800 text-white w-2/4 mb-10"
+          onClick={handleOrder}
+          disabled={cartItems.length < 1}
+        >
+          {" "}
+          {cartItems.length < 1 ? "Go to Checkout" : "Order"}
+        </button>
+      ) : (
+        <p className="text-7xl text-purple-500 mt-60">
+          Thank You for Shopping 🎉
+        </p>
+      )}
     </div>
   );
 }
