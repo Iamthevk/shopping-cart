@@ -1,19 +1,31 @@
 import ProductCard from "./ProductCard";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../context/CartContext";
+import { useEffect, useState, useMemo } from "react";
+import { fetchProducts } from "../features/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
 import FilterProducts from "./FilterProducts";
 import Shimmer from "./Shimmer";
 
 function ProductsPage({ searchQuery }) {
-  const { products, loading } = useContext(CartContext);
-  const [newProducts, setNewProducts] = useState(products);
-  var filteredProducts = products?.products?.filter((product) =>
-    product.title.toLowerCase().includes(searchQuery)
-  );
+  const dispatch = useDispatch();
+
+  const { products } = useSelector((store) => store.data);
+  const [newProducts, setNewProducts] = useState([]);
 
   useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  //memoize the filterproducts value
+  var filteredProducts = useMemo(
+    () =>
+      products?.filter((product) =>
+        product.title.toLowerCase().includes(searchQuery)
+      ),
+    [searchQuery, products]
+  );
+  useEffect(() => {
     setNewProducts(filteredProducts);
-  }, [products, searchQuery]);
+  }, [filteredProducts]);
 
   function handleSortProducts(sortBy) {
     let sortedProducts;
@@ -42,11 +54,12 @@ function ProductsPage({ searchQuery }) {
     }
     setNewProducts(sortedProducts);
   }
+
   return (
     <div>
       <FilterProducts onChange={handleSortProducts} />
       <div className="flex flex-wrap mx-auto w-full md:w-10/12 gap-5 pt-5 mb-10">
-        {!loading ? (
+        {products ? (
           newProducts?.map((product) => {
             return <ProductCard key={product.id} {...product} />;
           })

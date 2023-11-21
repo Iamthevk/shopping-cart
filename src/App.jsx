@@ -1,5 +1,4 @@
 import "./App.css";
-import { CartProvider } from "./context/CartContext";
 import {
   createBrowserRouter,
   Route,
@@ -22,7 +21,7 @@ const router = createBrowserRouter([
 function Root() {
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <CartProvider>
+    <>
       <Navbar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
       <Routes>
         <Route path="/" element={<ProductsPage searchQuery={searchQuery} />} />
@@ -43,7 +42,7 @@ function Root() {
           }
         />
       </Routes>
-    </CartProvider>
+    </>
   );
 }
 
