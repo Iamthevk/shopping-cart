@@ -1,8 +1,17 @@
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchProducts } from "../features/cartSlice";
 
 function ProductDetails() {
-  const { singleProduct } = useContext(CartContext);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const singleProduct = useSelector((store) => store.data);
+
+  useEffect(() => {
+    dispatch(fetchProducts(+id));
+  }, [id, dispatch]);
+
   return (
     <div className="w-11/12 mx-auto">
       <section className="w-10/12 mx-auto md:w-full md:flex items-center justify-around mb-7">
