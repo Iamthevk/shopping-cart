@@ -36,6 +36,7 @@ This project implements basic shopping cart features:
 - [Tailwind CSS](https://tailwindcss.com/)
 - React Router[^6.14.0]
 - React Toastify[^9.1.3]
+- Redux Toolkit
 
 ## Demo
 

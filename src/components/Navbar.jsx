@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
 import { useSelector } from "react-redux";
-import { cartCountSelector } from "../features/cartSlice";
+import { cartCountSelector } from "../redux/cartSlice";
 
 function Navbar({ searchQuery, setSearchQuery }) {
   const cartItemCount = useSelector(cartCountSelector);

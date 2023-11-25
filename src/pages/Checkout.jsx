@@ -1,7 +1,7 @@
 import Loader from "../components/Loader";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, clearProduct, removeProduct } from "../features/cartSlice";
+import { addProduct, clearProduct, removeProduct } from "../redux/cartSlice";
 
 function Checkout() {
   const [visible, setVisible] = useState(true);

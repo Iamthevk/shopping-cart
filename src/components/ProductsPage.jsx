@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard";
 import { useEffect, useState, useMemo } from "react";
-import { fetchProducts } from "../features/cartSlice";
+import { fetchProducts } from "../redux/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import FilterProducts from "./FilterProducts";
 import Shimmer from "./Shimmer";

@@ -2,7 +2,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/ReactToastify.min.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../features/cartSlice";
+import { addProduct } from "../redux/cartSlice";
 
 function ProductCard({ ...product }) {
   const { id, title, thumbnail, rating, price, description } = product;
